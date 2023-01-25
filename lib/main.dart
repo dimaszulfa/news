@@ -1,9 +1,21 @@
+import 'dart:developer' as logDev;
+
 import 'package:faker/faker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
+  var chatItems =ChatItem();
+  logDev.log(chatItems.toString());
+
+    if(chatItems is Widget){
+      logDev.log("WIDGET");
+  } else{
+          logDev.log("Not Widget");
+
+  }
   runApp(MyApp());
+
 }
 
 class MyApp extends StatelessWidget{
@@ -98,23 +110,252 @@ class MyApp extends StatelessWidget{
 
 //jenis provider image ada 4, imageasset, network, memory file
 
-body: Center(child: Container(
-  width: 350,
-  height: 500,
-  color: Colors.green,
-  child: Image.asset("assets/images/rockstar.png", fit: BoxFit.cover), //Image.asset / Image.network sudah mempunyai frame widget
-  // child: Image(
-  //   fit: BoxFit.cover, //keseluruhan widget
-  //   // BoxFit.contain, //ntah dari tinggi atau panjang
-  //   // image: AssetImage("assets/images/rockstar.png"), // by assets
-  //   image: NetworkImage("https://picsum.photos/200/300"),
-  //   ),
-)),
+// body: Center(child: Container(
+//   width: 350,
+//   height: 500,
+//   color: Colors.green,
+//   child: Image.asset("assets/images/rockstar.png", fit: BoxFit.cover), //Image.asset / Image.network sudah mempunyai frame widget
+//   // child: Image(
+//   //   fit: BoxFit.cover, //keseluruhan widget
+//   //   // BoxFit.contain, //ntah dari tinggi atau panjang
+//   //   // image: AssetImage("assets/images/rockstar.png"), // by assets
+//   //   image: NetworkImage("https://picsum.photos/200/300"),
+//   //   ),
+// )),
+
+
+//listview extrak widget
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// body: ListView(
+//   children: [ChatItem()],
+// ),
+
+body: ListView.builder(itemCount: 100, itemBuilder: (context, index) => 
+     ChatItem(imageUri: "https://picsum.photos/id/$index/200/300",name: faker.person.name(),subtitle: faker.lorem.sentence(),)
+),
         appBar: AppBar(
           title: Text("News App"), centerTitle: true,
         ),
       )
     );
+
+
   }
 
+}
+
+
+
+class ChatItem extends StatelessWidget {
+
+  var imageUri;
+  var name;
+  var subtitle;
+
+  ChatItem({this.imageUri,this.name,this.subtitle});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(name),
+      subtitle: Text(subtitle),
+      leading: CircleAvatar(
+        backgroundImage: NetworkImage(imageUri),
+      ),
+      trailing: Text("10.00 PM"),
+    );
+  }
 }
