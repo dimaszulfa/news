@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,10 +8,16 @@ void main(List<String> args) {
 
 class MyApp extends StatelessWidget{
 
+  var faker = Faker();
+
   final List<Color> color = [Colors.amber, Colors.red, Colors.blue, Colors.purple];
   final List<Widget> widgetGenerator = List.generate(100, (index) => Container(
+    
     child: Text("Hallo + ${index}"),
-  ));
+    
+
+  
+  ),);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +25,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.white,
         //Color(0xfffffff)
         // body: Center(
         //   child: Text("Ini adalah aplikasi newsappIni adalah aplikasi newsappIni adalah aplikasi newsappIni adalah aplikasi newsappIni adalah aplikasi newsappIni adalah aplikasi newsappIni adalah aplikasi newsappIni adalah aplikasi newsappIni adalah aplikasi newsappIni adalah aplikasi newsapp",
@@ -56,11 +63,53 @@ class MyApp extends StatelessWidget{
 
     //     ),
 
+//##ada row, colum, stack
+/** Lsit view with generator */
+    // body: ListView(
+    //   children: widgetGenerator,
+    // ),
 
-/** with generator */
-    body: ListView(
-      children: widgetGenerator,
-    ),
+
+//List tile with list view, display like a whatsapp chat
+// body: ListView(
+//   children: const [ListTile(
+//     // EdgeInsets.only(top: 50) --> only top padding
+//     // EdgeInsets.symmetric(vertical: 50, horizontal 8) --> atas bawah 50, horizontal 8
+//     contentPadding: EdgeInsets.all(10), //padding
+//     leading:  CircleAvatar(),
+//     title:  Text("Dimas Zulfa Santana"),
+//     tileColor: Colors.yellow,
+//     textColor: Colors.green,
+//     dense: false, //kepadatan biar lebih rapat
+//     subtitle:  Text("Hallo ini saya, dimasadasdasdasdasdasdasdasdasdassadadadadadadadadadadadadadadadasdasdasdasdasdasdasdasdasdasds", maxLines: 1, overflow: TextOverflow.ellipsis,),
+//     trailing:  Text("10.00 PM")
+
+//   ),
+//   Divider(),
+//   ListTile(
+//     leading:  CircleAvatar(),
+//     title:  Text("Dimas Zulfa Santana"),
+//     subtitle:  Text("Hallo ini saya, dimas"),
+//     trailing:  Text("10.00 PM")
+
+//   ),
+//   ],
+// ),
+
+//jenis provider image ada 4, imageasset, network, memory file
+
+body: Center(child: Container(
+  width: 350,
+  height: 500,
+  color: Colors.green,
+  child: Image.asset("assets/images/rockstar.png", fit: BoxFit.cover), //Image.asset / Image.network sudah mempunyai frame widget
+  // child: Image(
+  //   fit: BoxFit.cover, //keseluruhan widget
+  //   // BoxFit.contain, //ntah dari tinggi atau panjang
+  //   // image: AssetImage("assets/images/rockstar.png"), // by assets
+  //   image: NetworkImage("https://picsum.photos/200/300"),
+  //   ),
+)),
         appBar: AppBar(
           title: Text("News App"), centerTitle: true,
         ),
